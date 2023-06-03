@@ -8,14 +8,16 @@ https://leetcode.cn/problems/linked-list-cycle-ii/description/
  * };
  */
 
-//³­µÄ
+//æ–¹æ³•3ï¼šå°†ç›¸é‡ç‚¹è®°å½•å¹¶ç½®ç©ºï¼Œä»Žç›¸é‡ç‚¹ä¸‹ä¸ªç‚¹å¼€å§‹ä¸ºå¤´çœ‹ä½œæ–°é“¾è¡¨ï¼Œå…¥å£å°±æ˜¯æ–°é“¾è¡¨ä¸ŽåŽŸé“¾è¡¨çš„ç¬¬ä¸€ä¸ªé‡åˆç‚¹
+
+//æŠ„çš„
 struct ListNode *detectCycle(struct ListNode *head){
      if(NULL==head||NULL==head->next)
    {
         return NULL;
    }
     struct ListNode*fast=head,*slow=head;
-    while(fast&&fast->next)//ÈÃfastºÍlow½øÈë»·²¢´¦ÓÚÍ¬Ò»Î»ÖÃ
+    while(fast&&fast->next)//è®©fastå’Œlowè¿›å…¥çŽ¯å¹¶å¤„äºŽåŒä¸€ä½ç½®
     {
         
         fast=fast->next->next;
@@ -36,14 +38,14 @@ struct ListNode *detectCycle(struct ListNode *head){
 }
 
 
-//×Ô¼ºÒ»¿ªÊ¼Ñ§ÁË»·ÐÎÁ´±í1×ö³öÀ´µÄµÍËÙ·½·¨
+//è‡ªå·±ä¸€å¼€å§‹å­¦äº†çŽ¯å½¢é“¾è¡¨1åšå‡ºæ¥çš„ä½Žé€Ÿæ–¹æ³•
 // struct ListNode *detectCycle(struct ListNode *head) {
 //     if(NULL==head||NULL==head->next)
 //    {
 //         return NULL;
 //    }
 //     struct ListNode*fast=head->next->next,*slow=head;
-//     while(fast!=slow)//ÈÃfastºÍlow½øÈë»·²¢´¦ÓÚÍ¬Ò»Î»ÖÃ
+//     while(fast!=slow)//è®©fastå’Œlowè¿›å…¥çŽ¯å¹¶å¤„äºŽåŒä¸€ä½ç½®
 //     {
 //         if(NULL==fast||NULL==fast->next)
 //         {
@@ -53,7 +55,7 @@ struct ListNode *detectCycle(struct ListNode *head){
 //         slow=slow->next;
 //     }
 
-//     int i=1;//ÈÃfast×·Ò»È¦slow£¬ÊýÒ»ÏÂÈ¦ÖÐÔªËØ¸öÊý
+//     int i=1;//è®©fastè¿½ä¸€åœˆslowï¼Œæ•°ä¸€ä¸‹åœˆä¸­å…ƒç´ ä¸ªæ•°
 //     fast=fast->next->next;
 //     slow=slow->next;
 //     for(i=1;fast!=slow;i++)
