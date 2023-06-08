@@ -29,7 +29,7 @@ void QueueDestroy(Queue* pq)
 	}
 	pq->ptail = NULL;
 	pq->size = 0;
-	printf("ÄÚ´æÏú»Ù³É¹¦£¡\n");
+	printf("å†…å­˜é”€æ¯æˆåŠŸï¼\n");
 }
 void QueuePush(Queue* pq, QDataType x)
 {
@@ -114,7 +114,7 @@ MyStack* myStackCreate() {
 }
 void myStackPush(MyStack* obj, int x) {
 	
-	while(QueueSize(obj->top))//°ÑtopËùÓÐµÄÊý¾ÝÈ«Ñ¹Èëstore
+	while(QueueSize(obj->top))//æŠŠtopæ‰€æœ‰çš„æ•°æ®å…¨åŽ‹å…¥store
  	{
  		QueuePush(obj->store,QueueFront(obj->top));
  		QueuePop(obj->top);
@@ -125,9 +125,9 @@ int myStackTop(MyStack* obj) {
 return QueueFront(obj->top);
 }
 int myStackPop(MyStack* obj) {
-	QDataType ret=myStackTop(obj);//±£´æÒ»ÏÂÒªpopµÄÊý¾Ýµ½Ê±ºò·µ»Ø
-	QueuePop(obj->top);//×ÜÖ®ÏÈ°Ñtopµ¯µôÔÙËµ£¨
-	//°ÑstoreÀïµÄÊý¾ÝÑ¹µ½Ö»Ê£Ò»¸ö£¬»òÃ»ÓÐ£¬ÔÙ°Ñstoreµ±top
+	QDataType ret=myStackTop(obj);//ä¿å­˜ä¸€ä¸‹è¦popçš„æ•°æ®åˆ°æ—¶å€™è¿”å›ž
+	QueuePop(obj->top);//æ€»ä¹‹å…ˆæŠŠtopå¼¹æŽ‰å†è¯´ï¼ˆ
+	//æŠŠstoreé‡Œçš„æ•°æ®åŽ‹åˆ°åªå‰©ä¸€ä¸ªï¼Œæˆ–æ²¡æœ‰ï¼Œå†æŠŠstoreå½“top
 	while(QueueSize(obj->store)>1)
 	{
 		QueuePush(obj->top,QueueFront(obj->store));
@@ -138,9 +138,9 @@ int myStackPop(MyStack* obj) {
 	obj->store=temp;
 return ret;
 }
-//·Ç¿Õ·µ·Ç0
 bool myStackEmpty(MyStack* obj) {
-return !QueueSize(obj->top)||QueueSize(obj->store);
+return QueueEmpty(obj->store)&&QueueEmpty(obj->top);
+//return !QueueSize(obj->top)||QueueSize(obj->store);
 }
 void myStackFree(MyStack* obj) {
 	QueueDestroy(obj->top);
