@@ -1,0 +1,60 @@
+https://leetcode.cn/problems/swap-nodes-in-pairs/solutions/444474/liang-liang-jiao-huan-lian-biao-zhong-de-jie-di-91/
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+//自己写的
+class Solution {
+public:
+    ListNode* swapPairs(ListNode* head) {
+        if(NULL==head||NULL==head->next)
+        {
+            return head;
+        }
+        ListNode*prev=NULL;
+        ListNode*cur=head;
+        while(cur!=NULL&&cur->next!=NULL)
+        {
+            ListNode*next=cur->next;
+            cur->next=next->next;
+            next->next=cur;
+            if(NULL==prev)
+            {
+                head=next;
+            }
+            else
+            {
+                prev->next=next;
+            }
+            prev=cur;
+            cur=cur->next;
+        }
+
+        return head;
+    }
+};
+
+/抄的大佬递归
+class Solution {
+public:
+    ListNode* swapPairs(ListNode* head) {
+        if(NULL==head||NULL==head->next)
+        {
+            return head;
+        }
+        ListNode*one=head;
+        ListNode*two=one->next;
+        ListNode*three=two->next;
+        
+        two->next=one;
+        one->next=swapPairs(three);
+        return two;
+}
+};
